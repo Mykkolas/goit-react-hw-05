@@ -67,6 +67,7 @@
     background-color: rgb(91, 82, 21);
     box-shadow: 5px 5px rgb(79, 68, 9);
     padding: 5px;
+    color: black;
     border: 1px black solid;
     border-radius: 10px;
 }
