@@ -1,6 +1,6 @@
-const MovieCast = () => {
+function MovieCast() {
     return (
-        <div></div>
+        <div>hi</div>
     )
 }
 

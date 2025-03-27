@@ -18,6 +18,9 @@
     width: 35px;
     height: 36px;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border: 1px solid goldenrod;
@@ -104,7 +107,7 @@
 
 .fallbackImage {
     width: 100%;
-    height: 562px;
+    aspect-ratio: 2 / 3;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -134,9 +137,9 @@
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .fallbackImage {
+    /*  .fallbackImage {
         height: 359px;
-    }
+    } */
 }
 
 @media only screen and (min-width: 1440px) {
@@ -144,7 +147,7 @@
         grid-template-columns: repeat(4, 1fr);
     }
 
-    .fallbackImage {
+    /*   .fallbackImage {
         height: 538px;
-    }
+    } */
 }

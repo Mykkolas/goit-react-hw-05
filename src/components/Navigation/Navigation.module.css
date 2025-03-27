@@ -4,8 +4,8 @@
     height: 50px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
+    justify-content: center;
+    gap: 15px;
     padding-bottom: 10px;
 }
 
@@ -24,4 +24,18 @@
 .active {
     border: 5px gold solid;
     background-color: gold;
+}
+
+@media only screen and (min-width: 768px) {
+    .navigation {
+        justify-content: flex-start;
+    }
+}
+
+/* Styles for Desktop devices */
+@media only screen and (min-width: 1440px) {
+    .container {
+        max-width: 1440px;
+
+    }
 }

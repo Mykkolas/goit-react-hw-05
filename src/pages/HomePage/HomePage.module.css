@@ -1,5 +1,5 @@
 .trendingContainer {
-    margin-top: 50px;
+    margin-top: 30px;
     display: grid;
     gap: 25px;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -36,12 +36,44 @@
         background: linear-gradient(to bottom, rgba(0, 0, 0, 1), gold);
         opacity: 0.8;
         transition: opacity 0.3s ease;
+        pointer-events: none;
     }
 
     &:hover::after {
         opacity: 0;
     }
+}
 
+.homeHeader {
+    color: gold;
+    font-size: 22px;
+}
+
+.buttonsContainer {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    background-color: rgb(20, 19, 19);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 5px 5px gold;
+    width: 320px;
+}
+
+.trendsButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(91, 82, 21);
+    box-shadow: 5px 5px rgb(79, 68, 9);
+    padding: 5px;
+    border: 1px black solid;
+    border-radius: 10px;
+}
+
+.active {
+    border: 5px gold solid;
+    background-color: gold;
 }
 
 .poster {

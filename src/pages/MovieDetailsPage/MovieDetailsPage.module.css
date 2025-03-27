@@ -1,0 +1,67 @@
+.detailsImage {
+    width: 300px;
+    border: 2px solid gold;
+    border-radius: 5px;
+}
+
+.detailsContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+}
+
+.infosContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px;
+    font-size: 13px;
+    width: 300px;
+    background: #121010;
+    border: 2px solid gold;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.buttonsLink {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.heartBtn {
+    background-color: transparent;
+    color: goldenrod;
+    font-size: 25px;
+
+    &:hover {
+        color: red;
+    }
+}
+
+.savedHeartBtn {
+    composes: heartBtn;
+    color: red;
+
+    &:hover {
+        color: rgb(198, 0, 0);
+    }
+}
+
+.arrowLink {
+    background-color: transparent;
+    color: goldenrod;
+    font-size: 25px;
+
+    &:hover {
+        color: gold;
+    }
+}

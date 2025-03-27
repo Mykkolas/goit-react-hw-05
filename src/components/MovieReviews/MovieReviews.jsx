@@ -1,5 +1,5 @@
 
-const MovieReviews = () => {
+function MovieReviews() {
     return (
         <div>MovieReviews</div>
     )

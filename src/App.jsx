@@ -5,6 +5,11 @@ import HomePage from './pages/HomePage/HomePage';
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import MoviesPage from './pages/MoviesPage/MoviesPage';
+import Favourites from './pages/Favourites/Favourites';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
+import MovieCast from './components/MovieCast/MovieCast';
+import MovieReviews from './components/MovieReviews/MovieReviews';
 
 const API_KEY = "54ea7ce5f3d7843885fa77f83e0b1231";
 const BASE_URL = "https://api.themoviedb.org/3";
@@ -21,7 +26,7 @@ function App() {
 
     try {
       const response = await axios.get(`${BASE_URL}/trending/movie/${timeWindow}`, {
-        params: { api_key: API_KEY }
+        params: { api_key: API_KEY, include_adult: false }
       })
       setError(null)
       setTrendingMovies(response.data.results)
@@ -44,8 +49,9 @@ function App() {
     setLoading(true)
     try {
       const response = await axios.get(`${BASE_URL}/search/movie`, {
-        params: { api_key: API_KEY, query }
+        params: { api_key: API_KEY, query, include_adult: false }
       })
+
       setError(null)
       setSearchedMovies(response.data.results)
     }
@@ -57,6 +63,10 @@ function App() {
     }
   }
 
+  function getMovieById(movieId) {
+    return [...trendingMovies, ...searchedMovies].find(movie => movie.id === +movieId);
+  }
+
   useEffect(() => {
     fetchTrendingMovies()
   }, [])
@@ -64,10 +74,17 @@ function App() {
   return (
     <div className="container">
       <Navigation />
+
       <Routes>
+
         <Route path='/' element={<HomePage movies={trendingMovies} fetchTrending={fetchTrendingMovies} loading={loading} error={error} />} />
         <Route path='/movies' element={<MoviesPage movies={searchedMovies} fetchMovies={fetchMoviesBySearch} loading={loading} error={error} />} />
-        {/* ADD STARS AS RATINGGGGG */}
+        <Route path='/movies/:movieId' element={<MovieDetailsPage getMovieById={getMovieById} />}>
+          <Route path='cast' element={<MovieCast />} />
+          <Route path='reviews' element={<MovieReviews />} />
+        </Route>
+        <Route path='/favourites' element={<Favourites />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
     </div>

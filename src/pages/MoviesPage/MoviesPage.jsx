@@ -2,6 +2,7 @@ import { useState } from "react";
 import s from "./MoviesPage.module.css"
 import { MdSavedSearch } from "react-icons/md";
 import Loader from "../../components/Loader/Loader";
+import { Link } from "react-router-dom";
 
 
 function MoviesPage({ movies, fetchMovies, loading, error }) {
@@ -35,21 +36,27 @@ function MoviesPage({ movies, fetchMovies, loading, error }) {
             <div className={s.searchedContainer}>
                 {movies.map((movie) => (
                     <div key={movie.id}>
-                        {movie.poster_path ? (
-                            <div className={s.shownContainer}>
-                                <img
-                                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                    alt={movie.title}
-                                    className={s.movieImage}
-                                />
-                                <div className={s.overlay}></div>
-                            </div>
-                        ) : (
-                            <div className={s.fallbackImage}>
-                                <p>{movie.title}</p>
-                                <p className={s.notAvailable}>No image available</p>
-                            </div>
-                        )}
+                        <Link to={`/movies/${movie.id}`} state={{ from: location.pathname }} >
+                            {movie.poster_path ? (
+                                <div className={s.shownContainer}>
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                        alt={movie.title}
+                                        className={s.movieImage}
+                                    />
+                                    <div className={s.overlay}></div>
+                                </div>
+                            ) : (
+                                <div className={s.shownContainer}>
+
+                                    <div className={s.fallbackImage}>
+                                        <p>{movie.title}</p>
+                                        <p className={s.notAvailable}>No image available</p>
+                                    </div>
+                                </div>
+
+                            )}
+                        </Link>
                     </div>
                 ))}
             </div>

@@ -1,0 +1,13 @@
+.favP {
+    color: gold;
+}
+
+.favDiv {
+    margin-top: 20px;
+    background-color: rgb(20, 19, 19);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px gold;
+    width: 320px;
+    font-size: 13px;
+}
