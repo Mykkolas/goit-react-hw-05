@@ -4,14 +4,14 @@ import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 function MovieCast({ cast }) {
     const [currentIndex, setCurrentIndex] = useState(0);
-
+    const visibleCast = 2;
     if (!cast || cast.length === 0) {
         return <p className={s.noCast}>No cast information available.</p>;
     }
 
     const nextSlide = () => {
         setCurrentIndex((prevIndex) =>
-            Math.min(prevIndex + 1, cast.length)
+            Math.min(prevIndex + 1, cast.length - visibleCast)
         );
     };
 
@@ -38,7 +38,7 @@ function MovieCast({ cast }) {
                     ))}
                 </ul>
             </div>
-            <button className={s.arrow} onClick={nextSlide} disabled={currentIndex >= cast.length}>
+            <button className={s.arrow} onClick={nextSlide} disabled={currentIndex >= cast.length - visibleCast}>
                 <FaRegArrowAltCircleRight />
             </button>
         </div>
