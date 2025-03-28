@@ -16,8 +16,10 @@ const BASE_URL = "https://api.themoviedb.org/3";
 
 function App() {
 
-  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState([])
   const [searchedMovies, setSearchedMovies] = useState([])
+  const [cast, setCast] = useState([])
+  const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
@@ -56,12 +58,51 @@ function App() {
       setSearchedMovies(response.data.results)
     }
     catch (err) {
+      setError("Failed to fetch by search!")
       alert(err) /* FIIIIXXXX */
     }
     finally {
       setLoading(false)
     }
   }
+
+  async function fetchCast(filmId) {
+    setLoading(true)
+    if (!filmId) return
+    try {
+      const response = await axios.get(`${BASE_URL}/movie/${filmId}/credits`, {
+        params: { api_key: API_KEY, include_adult: false }
+      })
+      setError(null)
+      const filteredCast = response.data.cast.filter(actor => actor.profile_path); // Remove actors without images
+      setCast(filteredCast);
+    }
+    catch (err) {
+      setError("Failed to fetch cast!")
+      alert(err)
+    }
+    finally {
+      setLoading(false)
+    }
+  }
+
+  async function fetchReviews(filmId) {
+    try {
+      const response = await axios.get(`${BASE_URL}/movie/${filmId}/reviews`, {
+        params: { api_key: API_KEY, include_adult: false }
+      })
+      setError(null)
+      setReviews(response.data.results);
+    }
+    catch (err) {
+      setError("Failed to fetch reviews!")
+      alert(err)
+    }
+    finally {
+      setLoading(false)
+    }
+  }
+
 
   function getMovieById(movieId) {
     return [...trendingMovies, ...searchedMovies].find(movie => movie.id === +movieId);
@@ -79,9 +120,9 @@ function App() {
 
         <Route path='/' element={<HomePage movies={trendingMovies} fetchTrending={fetchTrendingMovies} loading={loading} error={error} />} />
         <Route path='/movies' element={<MoviesPage movies={searchedMovies} fetchMovies={fetchMoviesBySearch} loading={loading} error={error} />} />
-        <Route path='/movies/:movieId' element={<MovieDetailsPage getMovieById={getMovieById} />}>
-          <Route path='cast' element={<MovieCast />} />
-          <Route path='reviews' element={<MovieReviews />} />
+        <Route path='/movies/:movieId' element={<MovieDetailsPage getMovieById={getMovieById} fetchCast={fetchCast} fetchReviews={fetchReviews} />}>
+          <Route path='cast' element={<MovieCast cast={cast} />} />
+          <Route path='reviews' element={<MovieReviews reviews={reviews} />} />
         </Route>
         <Route path='/favourites' element={<Favourites />} />
         <Route path="*" element={<NotFoundPage />} />

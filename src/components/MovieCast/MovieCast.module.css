@@ -1,0 +1,62 @@
+.sliderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    overflow: hidden;
+    width: 600px;
+    position: relative;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.slider {
+    overflow: hidden;
+    width: 210px;
+}
+
+.castList {
+    display: flex;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.castItem {
+    text-align: center;
+    width: 100px;
+    flex-shrink: 0;
+}
+
+.castImage {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.actorName {
+    font-size: 13px;
+    margin-top: 5px;
+    font-style: italic;
+    color: goldenrod;
+}
+
+.arrow {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 5px;
+    color: goldenrod;
+
+    &:hover {
+        color: gold;
+    }
+}
+
+.arrow:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

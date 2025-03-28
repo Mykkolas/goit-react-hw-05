@@ -1,16 +1,30 @@
-import { Link, Navigate, useLocation, useParams } from "react-router-dom";
+import { Link, Navigate, Outlet, useLocation, useParams } from "react-router-dom";
 import s from "./MovieDetailsPage.module.css"
 import { CiHeart } from "react-icons/ci";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
-import { useState } from "react";
-function MovieDetailsPage({ getMovieById }) {
+import { useEffect, useState } from "react";
+import clsx from "clsx"
+function MovieDetailsPage({ getMovieById, fetchCast, fetchReviews }) {
+
+    const [activeLink, setActiveLink] = useState("")
     const { movieId } = useParams()
+    useEffect(() => {
+        if (!movieId) return
+        fetchCast(movieId)
+        fetchReviews(movieId)
+    }, [movieId])
     const location = useLocation()
     const [saved, setSaved] = useState(false)
     const backLinkHref = location.state?.from || "/movies";
     const movie = getMovieById(movieId)
     if (!movie) return <Navigate to="/movies" replace />;
+
+    function handleClick(option) {
+        setActiveLink(option)
+    }
+
+
 
     return (
         <div className={s.detailsContainer}>
@@ -36,7 +50,12 @@ function MovieDetailsPage({ getMovieById }) {
                 <p>Release Date: {movie.release_date}</p>
                 <p>Rating: {movie.vote_average}</p>
             </div>
-        </div>
+            <div className={s.linkContainer}>
+                <Link to="reviews" className={clsx(s.reviewLink, activeLink === "reviews" && s.active)} onClick={() => handleClick("reviews")}>Reviews</Link>
+                <Link to="cast" className={clsx(s.castLink, activeLink === "cast" && s.active)} onClick={() => handleClick("cast")}>Cast</Link>
+            </div>
+            <Outlet />
+        </div >
     )
 }
 

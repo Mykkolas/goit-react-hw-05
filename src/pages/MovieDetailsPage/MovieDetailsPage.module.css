@@ -65,3 +65,30 @@
         color: gold;
     }
 }
+
+.linkContainer {
+    display: flex;
+    gap: 50px;
+
+}
+
+.castLink,
+.reviewLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(91, 82, 21);
+    box-shadow: 5px 5px rgb(79, 68, 9);
+    min-width: 50px;
+    padding: 5px;
+    color: black;
+    border: 1px black solid;
+    border-radius: 10px;
+}
+
+
+
+.active {
+    border: 5px gold solid;
+    background-color: gold;
+}
