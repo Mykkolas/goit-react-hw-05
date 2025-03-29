@@ -68,3 +68,24 @@
     font-weight: bold;
     padding-bottom: 20px;
 }
+
+@media only screen and (min-width: 768px) {
+    .sliderContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        overflow: hidden;
+        width: 700px;
+        position: relative;
+        margin-top: 45px;
+        margin-bottom: 20px;
+    }
+
+    .slider {
+        overflow: hidden;
+        width: 540px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {}

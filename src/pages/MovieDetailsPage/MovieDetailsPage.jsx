@@ -55,23 +55,21 @@ function MovieDetailsPage({ getMovieById, fetchCast, fetchReviews }) {
                     {isFavorite ? <FaHeart /> : <CiHeart />}
                 </button>
             </div>
-            {movie.poster_path ? (
+            <div className={s.tabletInfos}>
+
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className={s.detailsImage} />
-            ) : (
-                <div className={s.fallbackImage}>
-                    <p>{movie.title}</p>
-                    <p className={s.notAvailable}>No image available</p>
+                <div>
+                    <div className={s.infosContainer}>
+                        <h2>{movie.title}</h2>
+                        <p>{movie.overview}</p>
+                        <p>Release Date: {movie.release_date}</p>
+                        <p>Rating: {movie.vote_average}</p>
+                    </div>
+                    <div className={s.linkContainer}>
+                        <Link to="reviews" className={clsx(s.reviewLink, activeLink === "reviews" && s.active)} onClick={() => handleClick("reviews")} state={{ from: backLinkHref }}>Reviews</Link>
+                        <Link to="cast" className={clsx(s.castLink, activeLink === "cast" && s.active)} onClick={() => handleClick("cast")} state={{ from: backLinkHref }}>Cast</Link>
+                    </div>
                 </div>
-            )}
-            <div className={s.infosContainer}>
-                <h2>{movie.title}</h2>
-                <p>{movie.overview}</p>
-                <p>Release Date: {movie.release_date}</p>
-                <p>Rating: {movie.vote_average}</p>
-            </div>
-            <div className={s.linkContainer}>
-                <Link to="reviews" className={clsx(s.reviewLink, activeLink === "reviews" && s.active)} onClick={() => handleClick("reviews")} state={{ from: backLinkHref }}>Reviews</Link>
-                <Link to="cast" className={clsx(s.castLink, activeLink === "cast" && s.active)} onClick={() => handleClick("cast")} state={{ from: backLinkHref }}>Cast</Link>
             </div>
             <Outlet />
         </div >

@@ -1,9 +1,12 @@
 .revList {
     margin-top: 25px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
 .revElem {

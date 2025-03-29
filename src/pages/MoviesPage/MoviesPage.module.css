@@ -136,18 +136,10 @@
     .searchedContainer {
         grid-template-columns: repeat(3, 1fr);
     }
-
-    /*  .fallbackImage {
-        height: 359px;
-    } */
 }
 
 @media only screen and (min-width: 1440px) {
     .searchedContainer {
         grid-template-columns: repeat(4, 1fr);
     }
-
-    /*   .fallbackImage {
-        height: 538px;
-    } */
 }
