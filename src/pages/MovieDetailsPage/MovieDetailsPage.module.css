@@ -1,5 +1,5 @@
 .detailsImage {
-    width: 300px;
+    width: 320px;
     border: 2px solid gold;
     border-radius: 5px;
 }
@@ -84,6 +84,7 @@
     color: black;
     border: 1px black solid;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 

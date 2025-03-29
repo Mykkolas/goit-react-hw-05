@@ -31,7 +31,8 @@ function App() {
         params: { api_key: API_KEY, include_adult: false }
       })
       setError(null)
-      setTrendingMovies(response.data.results)
+      const filteredTrends = response.data.results.filter(film => film.poster_path); // Remove films without images
+      setTrendingMovies(filteredTrends);
     }
     catch (err) {
       console.log("Error: ", err);
@@ -55,7 +56,8 @@ function App() {
       })
 
       setError(null)
-      setSearchedMovies(response.data.results)
+      const filteredSearchMovie = response.data.results.filter(film => film.poster_path); // Remove films without images
+      setSearchedMovies(filteredSearchMovie);
     }
     catch (err) {
       setError("Failed to fetch by search!")
@@ -102,7 +104,6 @@ function App() {
       setLoading(false)
     }
   }
-
 
   function getMovieById(movieId) {
     return [...trendingMovies, ...searchedMovies].find(movie => movie.id === +movieId);

@@ -4,7 +4,7 @@
     justify-content: center;
     gap: 10px;
     overflow: hidden;
-    width: 300px;
+    width: 320px;
     position: relative;
     margin-top: 25px;
     margin-bottom: 20px;
@@ -59,4 +59,12 @@
 .arrow:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+.noCast {
+    margin-top: 20px;
+    font-size: 20px;
+    color: gold;
+    font-weight: bold;
+    padding-bottom: 20px;
 }

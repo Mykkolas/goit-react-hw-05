@@ -1,3 +1,8 @@
+.favContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 .favP {
     color: gold;
 }
@@ -6,8 +11,82 @@
     margin-top: 20px;
     background-color: rgb(20, 19, 19);
     padding: 20px;
+    width: 280px;
+    margin-left: 25px;
     border-radius: 10px;
     box-shadow: 5px 5px gold;
-    width: 320px;
     font-size: 13px;
+}
+
+.moviesGrid {
+    margin-top: 40px;
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: 30px;
+}
+
+.movieCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.movieImage {
+    min-height: 360px;
+    width: 300px;
+    border: 2px solid gold;
+    border-radius: 5px;
+}
+
+.removeBtn {
+    position: absolute;
+    top: -4%;
+    border: 2px solid gold;
+    padding: 10px;
+    left: 85%;
+    color: gold;
+    background-color: transparent;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+
+    &:hover {
+        color: red;
+        border-color: red;
+    }
+}
+
+
+/* Tablets: 3 columns */
+@media only screen and (min-width: 768px) {
+    .moviesGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .removeBtn {
+        left: 90%;
+    }
+}
+
+/* Desktops: 4 columns */
+@media only screen and (min-width: 1440px) {
+    .moviesGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .movieImage {
+        min-height: 450px;
+    }
+
+    .removeBtn {
+        left: 87%;
+    }
 }
