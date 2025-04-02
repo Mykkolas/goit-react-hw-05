@@ -1,0 +1,15 @@
+.listContainer {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.poster {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+}

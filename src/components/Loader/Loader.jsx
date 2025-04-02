@@ -1,10 +1,9 @@
 import { RingLoader } from "react-spinners"
 import s from "../Loader/Loader.module.css"
-export default function Loader({ loading }) {
+export default function Loader() {
     return (
-        loading &&
         <div className={s.loader}>
-            <RingLoader color="#FFD700" loading={loading} size={50} />
+            <RingLoader color="#FFD700" size={50} />
         </div>
     )
 }

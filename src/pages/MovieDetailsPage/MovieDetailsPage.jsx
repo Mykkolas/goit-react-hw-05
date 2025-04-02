@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
-import { useParams, useLocation, Link } from "react-router-dom";
-/* import MovieCast from "../../components/MovieCast/MovieCast";
-import MovieReviews from "../../components/MovieReviews/MovieReviews";
- */
+import { useParams, useLocation, Link, Outlet, NavLink } from "react-router-dom";
+import Loader from "../../components/Loader/Loader";
+import s from "./MovieDetailsPage.module.css"
+
 export default function MovieDetailsPage() {
     const { movieId } = useParams();
     const location = useLocation();
@@ -29,18 +29,21 @@ export default function MovieDetailsPage() {
         fetchMovieDetails();
     }, [movieId]);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Loader />;
     if (error) return <p>{error}</p>;
     if (!movie) return null;
 
     return (
         <div>
-            <Link to={backLinkRef.current}>Go Back</Link>
+            <Link to={backLinkRef.current} className={s.backLink}>Go Back</Link>
             <h2>{movie.title}</h2>
-            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className={s.poster} />
             <p>{movie.overview}</p>
-
-
+            <nav className={s.nav}>
+                <NavLink to="cast" className={s.linkTo}>Cast</NavLink>
+                <NavLink to="reviews" className={s.linkTo}>Reviews</NavLink>
+            </nav>
+            <Outlet />
         </div>
     );
 }

@@ -1,0 +1,20 @@
+.backLink {
+    color: gold;
+}
+
+.poster {
+    width: 300px;
+    border: 2px solid gold;
+}
+
+.nav {
+    display: flex;
+    gap: 50px;
+}
+
+.linkTo {
+    color: gold;
+    padding: 10px;
+    border: 5px solid goldenrod;
+    border-radius: 20px;
+}
